@@ -37,6 +37,42 @@ function passwordprompt() {
   return reply;
 }
 
+// Creating function for generate passsword function which was previously undefined in the console
+function generatePassword() {
+  var passwordChoice = passwordprompt();
+  var passwordCombination = [];
+  var passwordFinal = "";
+
+  if (passwordChoice.passwordNumbers) {
+    for (var i of valueNumber)
+      passwordCombination.push(i);
+  }
+  if (passwordChoice.passwordUppercase) {
+    for (var i of valueupperCase)
+      passwordCombination.push(i);
+  }
+  if (passwordChoice.passwordLowercase) {
+    for (var i of valuelowerCase)
+      passwordCombination.push(i);
+  }
+  if (passwordChoice.passwordSpecial) {
+    for (var i of valueSpecial)
+      passwordCombination.push(i);
+  }
+
+  // Logs to console
+  console.log(passwordCombination);
+
+  // Creating for loop
+  for (var i = 0; i < passwordChoice.length; i++) {
+    passwordFinal += passwordCombination[Math.floor(Math.random()*passwordCombination.length)];
+  }
+
+  // Logs to console
+  console.log(passwordFinal);
+  return passwordFinal;
+}
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
