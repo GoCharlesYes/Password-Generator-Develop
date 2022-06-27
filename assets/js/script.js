@@ -2,10 +2,10 @@
 var generateBtn = document.querySelector("#generate");
 
 // Adding possible values for password
-var valueupperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var valuelowerCase = "abcdefghijklmnopqrstuvwxyz";
-var valueNumber = "0123456789";
-var valueSpecial = "~!@#$%^&*()_+`-=[]{}\|:;<>,.?/";
+var valueupperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var valuelowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var valueNumber = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var valueSpecial = ["~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "`", "-", "=", "[", "]", "{", "}", "<", ">", ".", "?", "/"];
 
 // Creating password criteria prompts
 function passwordprompt() {
@@ -31,7 +31,8 @@ function passwordprompt() {
     alert("Please enter a number between 8 and 128");
     else if((!passwordNumbers)&&(!passwordUppercase)&&(!passwordLowercase)&&(!passwordSpecial))
     alert("Please choose at least one type");
-    else check = true;
+    else 
+    check = true; 
 
   } while(!check);
   return reply;
@@ -64,12 +65,12 @@ function generatePassword() {
   console.log(passwordCombination);
 
   // Creating for loop
-  for (var i = 0; i < passwordChoice.length; i++) {
+  for (var i = 0; i < passwordChoice.passwordLength; i++) {
     passwordFinal += passwordCombination[Math.floor(Math.random()*passwordCombination.length)];
   }
-
-  // Logs to console
+  // Math.floor rounds to nearest whole number and math.random returns a number between 0 and 1
   console.log(passwordFinal);
+
   return passwordFinal;
 }
 
@@ -79,7 +80,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
